@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel='shortcut icon' href='{{ SERV_ROOT_DIR }}img/favicon.ico' type='image/x-icon'>
+
+    <script src="{{ SERV_ROOT_DIR }}js/jquery.min.js"></script>
+    <script src="{{ SERV_ROOT_DIR }}js/bootstrap.min.js"></script>
+
+    <link href="{{ SERV_ROOT_DIR }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ SERV_ROOT_DIR }}css/custom.css" rel="stylesheet">
+
+    {% block style %}{% endblock %}
+</head>
+<body>
+{% include "navigation.html" %}
+<div class="container padding-fifty">
+    {% block body %}{% endblock %}
+</div>
+    {% block script %}{% endblock %}
+</body>
+</html>

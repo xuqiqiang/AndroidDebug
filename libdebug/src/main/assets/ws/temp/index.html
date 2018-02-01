@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+  ~ /*
+  ~  *    Copyright (C) 2016 SnailStudio
+  ~  *    Copyright (C) 2011 Android Open Source Project
+  ~  *
+  ~  *    Licensed under the Apache License, Version 2.0 (the "License");
+  ~  *    you may not use this file except in compliance with the License.
+  ~  *    You may obtain a copy of the License at
+  ~  *
+  ~  *        http://www.apache.org/licenses/LICENSE-2.0
+  ~  *
+  ~  *    Unless required by applicable law or agreed to in writing, software
+  ~  *    distributed under the License is distributed on an "AS IS" BASIS,
+  ~  *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  *    See the License for the specific language governing permissions and
+  ~  *    limitations under the License.
+  ~  */
+  -->
+
+<html lang="en">
+<head>
+    <title>Android Debug Database</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='shortcut icon' href='{{ SERV_ROOT_DIR }}img/favicon.ico' type='image/x-icon'>
+
+    <script src="{{ SERV_ROOT_DIR }}js/jquery.min.js"></script>
+    <script src="{{ SERV_ROOT_DIR }}js/bootstrap.min.js"></script>
+    <script src="{{ SERV_ROOT_DIR }}js/jquery.dataTables.min.js"></script>
+    <script src="{{ SERV_ROOT_DIR }}js/dataTables.altEditor.free.js"></script>
+    <script src="{{ SERV_ROOT_DIR }}js/dataTables.buttons.min.js"></script>
+    <script src="{{ SERV_ROOT_DIR }}js/dataTables.select.min.js"></script>
+    <script src="{{ SERV_ROOT_DIR }}js/dataTables.responsive.min.js"></script>
+    <script src="{{ SERV_ROOT_DIR }}js/modal.js"></script>
+    <script src="{{ SERV_ROOT_DIR }}js/ajaxfileupload.min.js"></script>
+
+    <script type="application/javascript" src="{{ SERV_ROOT_DIR }}js/term.js"></script>
+
+    <link href="{{ SERV_ROOT_DIR }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ SERV_ROOT_DIR }}css/custom.css" rel="stylesheet">
+    <link href="{{ SERV_ROOT_DIR }}css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="{{ SERV_ROOT_DIR }}css/buttons.dataTables.min.css" rel="stylesheet">
+    <link href="{{ SERV_ROOT_DIR }}css/select.dataTables.min.css" rel="stylesheet">
+    <link href="{{ SERV_ROOT_DIR }}css/responsive.dataTables.min.css" rel="stylesheet">
+
+</head>
+<body>
+{% include "modal.html" %}
+<!-- Navigation -->
+{% include "navigation.html" %}
+
+<div class="container padding-fifty">
+
+    <div class="row padding-twenty">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label for="query">Query</label>
+                <input class="form-control" id="query">
+            </div>
+            <button id="selected-db-info" type="button" onclick="downloadDb()" class="btn btn-info">
+                Welcome
+            </button>
+            <button id="terminal" type="button" onclick="openTerminal()"
+                    class="btn btn-info">
+                Terminal
+            </button>
+            <button id="run-query" type="submit" onclick="queryFunction()"
+                    class="btn btn-primary pull-right disabled">Run
+                Query
+            </button>
+        </div>
+    </div>
+
+
+    <div id="div-main" class="row padding-twenty">
+
+        <div class="col-sm-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">Databases</div>
+            </div>
+            <div id="db-list" class="list-group">
+            </div>
+        </div>
+
+        <div id="div-table" class="col-sm-2">
+            <div id="parent-table-dir" class="panel panel-info">
+                <div class="panel-heading">Tables</div>
+            </div>
+            <div id="table-list" class="list-group">
+            </div>
+        </div>
+
+        <div id="parent-data-div" class="col-sm-8">
+            <div class="panel panel-info">
+                <div class="panel-heading">Data</div>
+            </div>
+        </div>
+
+        <div id="div-file" class="col-sm-10" style="display: none;">
+            <div class="panel panel-info">
+                <div class='panel-heading'>
+                    <a id="dir-name" href='#' onClick='backDirPath();'></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="term">
+    </div>
+
+    <div id="snackbar">Data Updated Successfully</div>
+
+</div>
+
+<script src="{{ SERV_ROOT_DIR }}js/app.js"></script>
+<script>
+    var MSG = {
+        'del_msg': '{% rstr v_del_msg %}',
+        'del_error': '{% rstr v_del_error %}',
+        'up_error': '{% rstr v_up_error %}',
+        'not_allow': '{% rstr v_not_allow %}',
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Android Terminal{% endblock %}
+{% block style %}
+<link href="{{ SERV_ROOT_DIR }}css/terminal.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+<div id="container-terminal"></div>
+<div id="snackbar">Data Updated Successfully</div>
+{% endblock %}
+{% block script %}
+<script type="application/javascript" src="{{ SERV_ROOT_DIR }}js/term.js"></script>
+<script src="{{ SERV_ROOT_DIR }}js/app_terminal.js"></script>
+{% endblock %}
