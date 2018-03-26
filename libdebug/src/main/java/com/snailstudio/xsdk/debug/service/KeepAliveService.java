@@ -28,10 +28,12 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.SystemClock;
+import android.util.Log;
 
 import com.snailstudio.xsdk.debug.Constants;
 import com.snailstudio.xsdk.debug.serv.WebServer;
 import com.snailstudio.xsdk.debug.serv.req.DatabaseHandler;
+import com.snailstudio.xsdk.debug.serv.req.database.NetworkUtils;
 import com.snailstudio.xsdk.debug.utils.CommonUtil;
 import com.snailstudio.xsdk.debug.utils.LogUtils;
 import com.snailstudio.xsdk.debug.utils.Utils;
@@ -85,7 +87,7 @@ public class KeepAliveService extends Service implements WebServer.OnWebServList
                         SharedPreferences sharedPreferences = getSharedPreferences(
                                 Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
                         sharedPreferences.edit().putInt(Constants.SHARED_PREF_KEY_PORT, mPort).apply();
-                        LogUtils.dLog(TAG, "mPort:" + mPort);
+                        Log.d("libdebug", NetworkUtils.getAddressLog(KeepAliveService.this, mPort));
                         webServer = new WebServer(KeepAliveService.this, mPort, Constants.Config.WEBROOT);
                         webServer.setOnWebServListener(KeepAliveService.this);
                         webServer.setDaemon(true);

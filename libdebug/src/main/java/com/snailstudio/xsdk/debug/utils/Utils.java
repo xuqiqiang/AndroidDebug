@@ -3,7 +3,6 @@ package com.snailstudio.xsdk.debug.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
-import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.text.TextUtils;
 
@@ -218,10 +217,11 @@ public class Utils {
         if (!marshmallowMacAddress.equals(result))
             return result;
 
-        WifiManager wifiMan = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-        WifiInfo wifiInf = wifiMan.getConnectionInfo();
-
-        result = wifiInf.getMacAddress();
+        WifiManager wifiMan = (WifiManager) context.getApplicationContext()
+                .getSystemService(Context.WIFI_SERVICE);
+        if (wifiMan != null) {
+            result = wifiMan.getConnectionInfo().getMacAddress();
+        }
 
         if (result == null || marshmallowMacAddress.equals(result)) {
             result = getAddressMacByInterface();
