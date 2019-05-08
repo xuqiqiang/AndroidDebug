@@ -585,8 +585,10 @@ function handleFileList(result) {
     }
   }
   else {
-    tableStr = tableStr + `<tr class="height"><td><a class="icon dir" href="#" onclick="enterFile('/sdcard/',false);">sdcard/</a></td><td class="detailsColumn"></td><td class="detailsColumn"></td><td class="operateColumn"></td></tr>`;
-    tableStr = tableStr + `<tr class="height"><td><a class="icon dir" href="#" onclick="enterFile('/system/',false);">system/</a></td><td class="detailsColumn"></td><td class="detailsColumn"></td><td class="operateColumn"></td></tr>`;
+    if (result.path == '/') {
+      tableStr = tableStr + `<tr class="height"><td><a class="icon dir" href="#" onclick="enterFile('/sdcard/',false);">sdcard/</a></td><td class="detailsColumn"></td><td class="detailsColumn"></td><td class="operateColumn"></td></tr>`;
+      tableStr = tableStr + `<tr class="height"><td><a class="icon dir" href="#" onclick="enterFile('/system/',false);">system/</a></td><td class="detailsColumn"></td><td class="detailsColumn"></td><td class="operateColumn"></td></tr>`;
+    }
   }
 
 
