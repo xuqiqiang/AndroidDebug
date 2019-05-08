@@ -102,6 +102,7 @@
     <string name="v_wel_to">Welcome to</string>
     <string name="v_yes">Yes</string>
     <string name="v_no">NO</string>
+    <string name="v_close">Close</string>
     <string name="v_tip">Tip</string>
     <string name="v_del_msg">Confirm deletions?</string>
     <string name="v_del_error">Deletion error.</string>
